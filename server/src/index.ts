@@ -3,6 +3,7 @@ import { json as bodyParser } from "body-parser";
 import cors from "cors";
 import mysql2 from "mysql2";
 
+
 // Setting up server
 const app = express();
 app.use(cors());
