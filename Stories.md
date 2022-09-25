@@ -9,3 +9,7 @@ so that other people do not walk in on me.
 As a person finishing up my court exercise,
 I want to scan a QR code at the end of my session
 to indicate that the court space is now free.
+
+As an athletic emory student,
+I want to be able make a group with my friends,
+so we can play as a team.
