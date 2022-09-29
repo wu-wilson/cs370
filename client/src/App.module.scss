@@ -1,7 +1,19 @@
+// VARIABLES
+$font-family: "Source Code Pro";
+$card-color: white;
+$primary-color: #88bded;
+
+:export {
+  font_family: $font-family;
+  card_color: $card-color;
+  primary_color: $primary-color;
+}
+
 body {
   margin: 0;
 }
 
 .App {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }

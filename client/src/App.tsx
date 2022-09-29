@@ -1,12 +1,10 @@
 import styles from "./App.module.scss";
-import LoginPage from "./LoginPage"
-import Title from "./Title"
+import Login from "./pages/Login";
 
 const App = () => {
   return (
     <div className={styles["App"]}>
-      <Title/>
-      <LoginPage/>
+      <Login />
     </div>
   );
 };
