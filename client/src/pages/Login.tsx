@@ -6,12 +6,28 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
-  const forgotPassword = () => {};
-  const createAccount = () => {};
+  const forgotPassword = () => {
+    console.log("forgot password");
+  };
+  const createAccount = () => {
+    console.log("create account");
+  };
 
-  const login = () => {};
+  const login = () => {
+    console.log("login");
+  };
 
-  useEffect(() => {}, [rememberMe]);
+  useEffect(() => {
+    console.log("Remember Me: " + rememberMe);
+  }, [rememberMe]);
+
+  useEffect(() => {
+    console.log("Username: " + username);
+  }, [username]);
+
+  useEffect(() => {
+    console.log("Password: " + password);
+  }, [password]);
 
   return (
     <div className={styles["page"]}>
