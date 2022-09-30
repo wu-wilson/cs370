@@ -6,6 +6,13 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
+  const forgotPassword = () => {};
+  const createAccount = () => {};
+
+  const login = () => {};
+
+  useEffect(() => {}, [rememberMe]);
+
   return (
     <div className={styles["page"]}>
       <div className={styles["card"]}>
@@ -41,7 +48,17 @@ const Login = () => {
             ></input>
             <label htmlFor="rememberMe">Remember Me</label>
           </div>
-          <div className={styles["forgot"]}>Forgot password?</div>
+          <div className={styles["forgot"]} onClick={forgotPassword}>
+            Forgot password?
+          </div>
+        </div>
+        <div className={styles["loginContainer"]}>
+          <button className={styles["login"]} onClick={login}>
+            Login
+          </button>
+        </div>
+        <div className={styles["dontHaveAccount"]} onClick={createAccount}>
+          Don't have an account?
         </div>
       </div>
     </div>

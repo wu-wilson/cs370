@@ -2,11 +2,13 @@
 $font-family: "Source Code Pro";
 $card-color: white;
 $primary-color: #88bded;
+$secondary-color: #4e709d;
 
 :export {
   font_family: $font-family;
   card_color: $card-color;
   primary_color: $primary-color;
+  secondary_color: $secondary-color;
 }
 
 body {

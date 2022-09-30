@@ -65,4 +65,34 @@
       }
     }
   }
+  .loginContainer {
+    width: 15rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    .login {
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background-color: styles.$primary-color;
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: white;
+      transition: ease background-color 200ms;
+      &:hover {
+        cursor: pointer;
+        background-color: styles.$secondary-color;
+      }
+    }
+  }
+  .dontHaveAccount {
+    margin-top: 5rem;
+    font-style: italic;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
 }
