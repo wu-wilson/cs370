@@ -4,6 +4,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
 
   return (
     <div className={styles["page"]}>
@@ -29,6 +30,17 @@ const Login = () => {
           }}
         />
         <div className={styles["rememberForgotContainer"]}>
+          <div className={styles["rememberMe"]}>
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setRememberMe(!rememberMe);
+              }}
+            ></input>
+            <label htmlFor="rememberMe">Remember Me</label>
+          </div>
           <div className={styles["forgot"]}>Forgot password?</div>
         </div>
       </div>

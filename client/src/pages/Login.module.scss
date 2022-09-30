@@ -10,8 +10,8 @@
 }
 
 .card {
-  width: 320px;
-  height: 450px;
+  width: 20rem;
+  height: 29rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@
   }
   .username,
   .password {
-    width: 230px;
+    width: 15rem;
     height: 28px;
     border: 1.5px solid styles.$primary-color;
     border-radius: 5px;
@@ -41,15 +41,21 @@
   }
   .inputTitle {
     margin-top: 1.5rem;
-    width: 230px;
+    width: 15rem;
     display: flex;
     align-items: flex-start;
   }
   .rememberForgotContainer {
-    width: 230px;
+    width: 15rem;
     display: flex;
     justify-content: space-between;
     margin-top: 0.8rem;
+    .rememberMe {
+      input[type="checkbox"] {
+        vertical-align: middle;
+        margin-left: 0;
+      }
+    }
     .forgot {
       font-style: italic;
       text-decoration: underline;
