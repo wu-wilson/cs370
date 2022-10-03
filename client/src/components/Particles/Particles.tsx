@@ -47,12 +47,12 @@ const Particles = ({
         const y = Math.random() * (canvas.current.height - r * 2) + r;
         const dx =
           Math.floor(Math.random() * 2) === 1
-            ? randomDecimal(0.1, 0.3)
-            : randomDecimal(0.1, 0.3) * -1;
+            ? Math.random()
+            : Math.random() * -1;
         const dy =
           Math.floor(Math.random() * 2) === 1
-            ? randomDecimal(0.1, 0.3)
-            : randomDecimal(0.1, 0.3) * -1;
+            ? Math.random()
+            : Math.random() * -1;
         particles.push({ r: r, x: x, y: y, dx: dx, dy: dy });
       }
     }
@@ -141,8 +141,8 @@ const Particles = ({
 
   useEffect(() => {
     if (canvas && canvas.current) {
-      canvas.current.width = window.innerWidth;
-      canvas.current.height = window.innerHeight;
+      canvas.current.width = window.innerWidth * 1.5;
+      canvas.current.height = window.innerHeight * 1.5;
       setCtx(canvas.current.getContext("2d"));
     }
   }, [canvas]);

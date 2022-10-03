@@ -10,10 +10,11 @@
 }
 
 .card {
-  width: 500px;
-  height: auto;
+  width: 350px;
+  height: 500px;
   width: 40%;
-  padding: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,27 +28,24 @@
     }
   }
   .subtitle {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 1rem;
     text-align: center;
-    line-height: 2;
-    width: 50%;
-    min-width: 250px;
+    line-height: 1.5;
+    width: 100%;
   }
 }
 .inputTitle {
   margin-top: 1.5rem;
-  width: 50%;
-  min-width: 250px;
+  width: 300px;
   display: flex;
   align-items: flex-start;
 }
 .username,
 .password {
-  width: 50%;
-  min-width: 250px;
-  height: 30px;
+  width: 300px;
+  min-height: 30px;
   border: 1.5px solid black;
   border-radius: 5px;
   &:focus {
@@ -57,8 +55,7 @@
 }
 
 .rememberForgotContainer {
-  width: 50%;
-  min-width: 250px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
@@ -80,11 +77,10 @@
 }
 
 .loginContainer {
-  width: 50%;
-  min-width: 250px;
+  width: 300px;
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
+  margin-top: 10px;
   .login {
     width: 120px;
     height: 45px;
@@ -103,7 +99,10 @@
 }
 
 .dontHaveAccount {
-  margin-top: 5rem;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  white-space: pre-wrap;
   font-style: italic;
   .signUp {
     text-decoration: underline;
