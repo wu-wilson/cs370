@@ -11,10 +11,10 @@ app.use(bodyParser());
 
 // Connect to database
 const database = mysql2.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "AScaonima123",
-  database: "rec_hub_db",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB,
 });
 
 database.connect((err) => {
