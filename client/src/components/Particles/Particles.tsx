@@ -88,7 +88,7 @@ const Particles = ({
       const opacity = 1 - distance / 100;
       if (opacity > 0) {
         if (ctx) {
-          ctx.lineWidth = 0.03;
+          ctx.lineWidth = 0.1;
           const rgb = hexToRgb(color);
           if (rgb) {
             ctx.strokeStyle = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -141,8 +141,8 @@ const Particles = ({
 
   useEffect(() => {
     if (canvas && canvas.current) {
-      canvas.current.width = window.innerWidth * 1.5;
-      canvas.current.height = window.innerHeight * 1.5;
+      canvas.current.width = window.innerWidth * 2;
+      canvas.current.height = window.innerHeight * 2;
       setCtx(canvas.current.getContext("2d"));
     }
   }, [canvas]);
@@ -176,8 +176,8 @@ const Particles = ({
 
   window.addEventListener(`resize`, () => {
     if (canvas.current) {
-      canvas.current.width = window.innerWidth;
-      canvas.current.height = window.innerHeight;
+      canvas.current.width = window.innerWidth * 2;
+      canvas.current.height = window.innerHeight * 2;
       updateParticles(particles);
     }
   });

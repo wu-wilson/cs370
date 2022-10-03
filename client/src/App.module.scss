@@ -4,12 +4,16 @@ $secondary-color: #4e709d;
 $page-color: #f0f0f0;
 $card-color: white;
 $font-family: Source Code Pro;
+$smartphone-bp: 800px;
+$tablet-bp: 1200px;
 
 :export {
   primary_color: $primary-color;
   page_color: $page-color;
   card_color: $card-color;
   font_family: $font-family;
+  smartphone_bp: $smartphone-bp;
+  tablet_bp: $tablet-bp;
 }
 
 body {

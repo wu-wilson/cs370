@@ -24,60 +24,66 @@ const Login = () => {
   };
 
   return (
-    <div className={styles["container"]}>
-      <Particles num={40} radius={3} color={vars["primary_color"]} />
-      <div className={styles["card"]}>
-        <div className={styles["title"]}>
-          Login<span className={styles["period"]}>.</span>
-        </div>
-        <div className={styles["subtitle"]}>
-          Welcome back! Enter your details to sign into your account.
-        </div>
-        <div className={styles["inputTitle"]}>Username</div>
-        <input
-          type="text"
-          className={styles["username"]}
-          value={username}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <div className={styles["inputTitle"]}>Password</div>
-        <input
-          type="text"
-          className={styles["password"]}
-          value={password}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <div className={styles["rememberForgotContainer"]}>
-          <div className={styles["rememberMe"]}>
+    <>
+      <Particles num={40} radius={6} color={vars["primary_color"]} />
+      <div className={styles["container"]}>
+        <div className={styles["card"]}>
+          <div className={styles["titles"]}>
+            <span className={styles["title"]}>
+              Login<span className={styles["period"]}>.</span>
+            </span>
+            <span className={styles["subtitle"]}>
+              Welcome back! Enter your account details to sign in.
+            </span>
+          </div>
+          <div className={styles["input-container"]}>
+            <span>Username</span>
             <input
-              type="checkbox"
-              id="rememberMe"
-              checked={rememberMe}
-              onChange={() => {
-                setRememberMe(!rememberMe);
+              type="text"
+              className={styles["username"]}
+              value={username}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setUsername(e.target.value);
               }}
-            ></input>
-            <label htmlFor="rememberMe">Remember Me</label>
+            />
+            <span className={styles["input-title"]}>Password</span>
+            <input
+              type="text"
+              className={styles["password"]}
+              value={password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <div className={styles["remember-forgot-container"]}>
+              <div className={styles["remember-me"]}>
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  checked={rememberMe}
+                  onChange={() => {
+                    setRememberMe(!rememberMe);
+                  }}
+                />
+                <label htmlFor="rememberMe">Remember Me</label>
+              </div>
+              <div className={styles["forgot"]} onClick={forgotPassword}>
+                Forgot password?
+              </div>
+            </div>
+            <div className={styles["login-container"]}>
+              <button className={styles["login"]} onClick={login}>
+                Login
+              </button>
+            </div>
           </div>
-          <div className={styles["forgot"]} onClick={forgotPassword}>
-            Forgot password?
+          <div className={styles["no-account"]} onClick={createAccount}>
+            Don't have an account?{" "}
+            <span className={styles["sign-up"]}>Sign up!</span>
           </div>
-        </div>
-        <div className={styles["loginContainer"]}>
-          <button className={styles["login"]} onClick={login}>
-            Login
-          </button>
-        </div>
-        <div className={styles["dontHaveAccount"]} onClick={createAccount}>
-          Don't have an account?{" "}
-          <span className={styles["signUp"]}>Sign up!</span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

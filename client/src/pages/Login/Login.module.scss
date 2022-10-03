@@ -2,109 +2,106 @@
 
 .container {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   font-family: vars.$font_family;
 }
 
 .card {
-  width: 350px;
-  height: 500px;
+  height: 80%;
   width: 40%;
-  padding: 20px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  justify-content: space-between;
   background-color: vars.$card_color;
   border-radius: 20px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 80%;
   .title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     .period {
       color: vars.$secondary-color;
     }
   }
   .subtitle {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 1.5;
-    width: 100%;
-  }
-}
-.inputTitle {
-  margin-top: 1.5rem;
-  width: 300px;
-  display: flex;
-  align-items: flex-start;
-}
-.username,
-.password {
-  width: 300px;
-  min-height: 30px;
-  border: 1.5px solid black;
-  border-radius: 5px;
-  &:focus {
-    outline: none;
-    border: 2px solid vars.$secondary-color;
+    margin-top: 0.9rem;
   }
 }
 
-.rememberForgotContainer {
-  width: 300px;
+.input-container {
+  width: 80%;
   display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  .rememberMe {
-    input[type="checkbox"] {
-      vertical-align: middle;
-      margin-left: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  .input-title {
+    margin-top: 1rem;
+  }
+  .username,
+  .password {
+    height: 30px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    &:focus {
+      outline: none;
+      border: 2px solid vars.$secondary-color;
     }
   }
-  .forgot {
-    font-style: italic;
-    text-decoration: underline;
-    &:hover {
-      cursor: pointer;
+  .remember-forgot-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    .remember-me {
+      input[type="checkbox"] {
+        vertical-align: middle;
+        margin-left: 0;
+      }
+    }
+    .forgot {
+      font-style: italic;
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+        color: vars.$secondary-color;
+      }
+    }
+  }
+  .login-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    .login {
+      width: 120px;
+      height: 45px;
+      border: none;
+      border-radius: 10px;
+      background-color: vars.$primary_color;
       font-weight: bold;
-      color: vars.$secondary-color;
+      color: white;
+      transition: ease background-color 200ms;
+      &:hover {
+        cursor: pointer;
+        background-color: vars.$secondary_color;
+      }
     }
   }
 }
 
-.loginContainer {
-  width: 300px;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-  .login {
-    width: 120px;
-    height: 45px;
-    border: none;
-    border-radius: 10px;
-    background-color: vars.$primary_color;
-    font-weight: bold;
-    color: white;
-    transition: ease background-color 200ms;
-    font-size: 1rem;
-    &:hover {
-      cursor: pointer;
-      background-color: vars.$secondary_color;
-    }
-  }
-}
-
-.dontHaveAccount {
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  white-space: pre-wrap;
+.no-account {
   font-style: italic;
-  .signUp {
+  .sign-up {
     text-decoration: underline;
     transition: ease color 200ms;
     &:hover {
@@ -112,5 +109,35 @@
       font-weight: bold;
       color: vars.$secondary_color;
     }
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: vars.$tablet_bp) {
+  .card {
+    width: 60%;
+    font-size: 0.9rem;
+  }
+  .titles {
+    width: 60%;
+  }
+  .remember-me,
+  .forgot {
+    font-size: 0.9rem;
+  }
+}
+
+/* Smartphones */
+@media only screen and (max-width: vars.$smartphone_bp) {
+  .card {
+    width: 85%;
+    font-size: 0.8rem;
+  }
+  .titles {
+    width: 90%;
+  }
+  .remember-me,
+  .forgot {
+    font-size: 0.7rem;
   }
 }
