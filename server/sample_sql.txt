@@ -1,0 +1,13 @@
+CREATE DATABASE rec_hub_db;
+USE rec_hub_db;
+
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    PRIMARY KEY(id)
+);
+
+INSERT INTO users (username, password) VALUES ('test_username', 'test_password');
+SELECT * FROM users;
+DROP TABLE users;
