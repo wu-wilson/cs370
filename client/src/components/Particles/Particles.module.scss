@@ -1,0 +1,11 @@
+@use "../../App.module.scss" as vars;
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: vars.$page_color;
+  z-index: -1;
+}

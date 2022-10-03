@@ -1,0 +1,117 @@
+@use "../../App.module.scss" as vars;
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: vars.$font_family;
+}
+
+.card {
+  width: 500px;
+  height: auto;
+  width: 40%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: vars.$card_color;
+  border-radius: 20px;
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    .period {
+      color: vars.$secondary-color;
+    }
+  }
+  .subtitle {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2;
+    width: 50%;
+    min-width: 250px;
+  }
+}
+.inputTitle {
+  margin-top: 1.5rem;
+  width: 50%;
+  min-width: 250px;
+  display: flex;
+  align-items: flex-start;
+}
+.username,
+.password {
+  width: 50%;
+  min-width: 250px;
+  height: 30px;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+    border: 2px solid vars.$secondary-color;
+  }
+}
+
+.rememberForgotContainer {
+  width: 50%;
+  min-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  .rememberMe {
+    input[type="checkbox"] {
+      vertical-align: middle;
+      margin-left: 0;
+    }
+  }
+  .forgot {
+    font-style: italic;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+      color: vars.$secondary-color;
+    }
+  }
+}
+
+.loginContainer {
+  width: 50%;
+  min-width: 250px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  .login {
+    width: 120px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background-color: vars.$primary_color;
+    font-weight: bold;
+    color: white;
+    transition: ease background-color 200ms;
+    font-size: 1rem;
+    &:hover {
+      cursor: pointer;
+      background-color: vars.$secondary_color;
+    }
+  }
+}
+
+.dontHaveAccount {
+  margin-top: 5rem;
+  font-style: italic;
+  .signUp {
+    text-decoration: underline;
+    transition: ease color 200ms;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+      color: vars.$secondary_color;
+    }
+  }
+}

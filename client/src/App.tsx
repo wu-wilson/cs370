@@ -1,14 +1,18 @@
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import styles from "./App.module.scss";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 const App = () => {
   return (
-    <div className={styles["App"]}>
-      {/* Comment out or delete <Register /> out to see login. */}
-      {/* <Register/> */}
-      <Login />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<div>404 Page not found</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

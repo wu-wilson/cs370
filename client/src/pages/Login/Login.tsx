@@ -1,7 +1,12 @@
-import styles from "./Login.module.scss";
 import { useState, useEffect, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import Particles from "../../components/Particles/Particles";
+import vars from "../../App.module.scss";
+import styles from "./Login.module.scss";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -9,32 +14,26 @@ const Login = () => {
   const forgotPassword = () => {
     console.log("forgot password");
   };
-  const createAccount = () => {
-    console.log("create account");
-  };
 
   const login = () => {
     console.log("login");
   };
 
-  useEffect(() => {
-    console.log("Remember Me: " + rememberMe);
-  }, [rememberMe]);
-
-  useEffect(() => {
-    console.log("Username: " + username);
-  }, [username]);
-
-  useEffect(() => {
-    console.log("Password: " + password);
-  }, [password]);
+  const createAccount = () => {
+    navigate("/register");
+  };
 
   return (
-    <div className={styles["page"]}>
+    <div className={styles["container"]}>
+      <Particles num={40} radius={3} color={vars["primary_color"]} />
       <div className={styles["card"]}>
-        <div className={styles["title"]}>Rec Hub</div>
-        <div className={styles["subtitle"]}>Created by Five Guys</div>
-        <div className={styles["inputTitle"]}>Email</div>
+        <div className={styles["title"]}>
+          Login<span className={styles["period"]}>.</span>
+        </div>
+        <div className={styles["subtitle"]}>
+          Welcome back! Enter your details to sign into your account.
+        </div>
+        <div className={styles["inputTitle"]}>Username</div>
         <input
           type="text"
           className={styles["username"]}
@@ -58,7 +57,7 @@ const Login = () => {
               type="checkbox"
               id="rememberMe"
               checked={rememberMe}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              onChange={() => {
                 setRememberMe(!rememberMe);
               }}
             ></input>
@@ -74,7 +73,8 @@ const Login = () => {
           </button>
         </div>
         <div className={styles["dontHaveAccount"]} onClick={createAccount}>
-          Don't have an account?
+          Don't have an account?{" "}
+          <span className={styles["signUp"]}>Sign up!</span>
         </div>
       </div>
     </div>

@@ -1,21 +1,22 @@
-// VARIABLES
-$font-family: "Source Code Pro";
-$card-color: white;
-$primary-color: #88bded;
+// Variables
+$primary-color: #89a4c7;
 $secondary-color: #4e709d;
+$page-color: #f0f0f0;
+$card-color: white;
+$font-family: Source Code Pro;
 
 :export {
-  font_family: $font-family;
-  card_color: $card-color;
   primary_color: $primary-color;
-  secondary_color: $secondary-color;
+  page_color: $page-color;
+  card_color: $card-color;
+  font_family: $font-family;
 }
 
 body {
   margin: 0;
 }
 
-.App {
+.container {
   width: 100vw;
   height: 100vh;
 }
