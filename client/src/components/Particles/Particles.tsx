@@ -47,12 +47,12 @@ const Particles = ({
         const y = Math.random() * (canvas.current.height - r * 2) + r;
         const dx =
           Math.floor(Math.random() * 2) === 1
-            ? randomDecimal(1, 3)
-            : randomDecimal(1, 3) * -1;
+            ? randomDecimal(0.5, 1)
+            : randomDecimal(0.5, 1) * -1;
         const dy =
           Math.floor(Math.random() * 2) === 1
-            ? randomDecimal(1, 3)
-            : randomDecimal(1, 3) * -1;
+            ? randomDecimal(0.5, 1)
+            : randomDecimal(0.5, 1) * -1;
         particles.push({ r: r, x: x, y: y, dx: dx, dy: dy });
       }
     }
