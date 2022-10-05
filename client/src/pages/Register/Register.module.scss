@@ -96,6 +96,11 @@
   }
 }
 
+.error {
+  color: red;
+  font-size: 0.7rem;
+}
+
 /* Tablets */
 @media only screen and (max-width: vars.$tablet_bp) {
   .card {

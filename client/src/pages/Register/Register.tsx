@@ -1,5 +1,6 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { checkEmail, checkUsername, checkPassword } from "./HelperFunctions";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
 import styles from "./Register.module.scss";
@@ -11,8 +12,19 @@ const Register = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const createAccount = () => {
-    console.log("create account.");
+  const [hideErrors, setHideErrors] = useState<boolean>(true);
+
+  const createAccount = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      checkEmail(email) === "valid" &&
+      checkUsername(username) === "valid" &&
+      checkPassword(password) === "valid"
+    ) {
+      console.log("createAccount");
+    } else {
+      setHideErrors(false);
+    }
   };
 
   const loginRedirect = () => {
@@ -32,7 +44,7 @@ const Register = () => {
               Create an account and race to the courts!
             </span>
           </div>
-          <div className={styles["input-container"]}>
+          <form className={styles["input-container"]} onSubmit={createAccount}>
             <span>Email</span>
             <input
               type="text"
@@ -42,6 +54,11 @@ const Register = () => {
                 setEmail(e.target.value);
               }}
             />
+            <span className={styles["error"]}>
+              {hideErrors || checkEmail(email) === "valid"
+                ? null
+                : checkEmail(email)}
+            </span>
             <span className={styles["input-title"]}>Username</span>
             <input
               type="text"
@@ -51,24 +68,33 @@ const Register = () => {
                 setUsername(e.target.value);
               }}
             />
+            <span className={styles["error"]}>
+              {hideErrors || checkUsername(username) === "valid"
+                ? null
+                : checkUsername(username)}
+            </span>
             <span className={styles["input-title"]}>Password</span>
             <input
-              type="text"
+              type="password"
               className={styles["password"]}
               value={password}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setPassword(e.target.value);
               }}
             />
+            <span className={styles["error"]}>
+              {hideErrors || checkPassword(password) === "valid"
+                ? null
+                : checkPassword(password)}
+            </span>
             <div className={styles["button-container"]}>
-              <button
+              <input
+                type="submit"
+                value="Create Account"
                 className={styles["create-account"]}
-                onClick={createAccount}
-              >
-                Create Account
-              </button>
+              />
             </div>
-          </div>
+          </form>
           <div className={styles["has-account"]} onClick={loginRedirect}>
             Already have an account?{" "}
             <span className={styles["sign-in"]}>Sign in!</span>

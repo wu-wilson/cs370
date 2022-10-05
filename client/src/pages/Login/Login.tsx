@@ -48,7 +48,7 @@ const Login = () => {
             />
             <span className={styles["input-title"]}>Password</span>
             <input
-              type="text"
+              type="password"
               className={styles["password"]}
               value={password}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
