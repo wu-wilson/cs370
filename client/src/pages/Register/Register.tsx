@@ -44,44 +44,50 @@ const Register = () => {
               Create an account and race to the courts!
             </span>
           </div>
-          <form className={styles["input-container"]} onSubmit={createAccount}>
+          <form className={styles["form"]} onSubmit={createAccount}>
             <span>Email</span>
-            <input
-              type="text"
-              className={styles["email"]}
-              value={email}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setEmail(e.target.value);
-              }}
-            />
+            <span className={styles["input-container"]}>
+              <input
+                type="text"
+                className={styles["email"]}
+                value={email}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </span>
             <span className={styles["error"]}>
               {hideErrors || checkEmail(email) === "valid"
                 ? null
                 : checkEmail(email)}
             </span>
             <span className={styles["input-title"]}>Username</span>
-            <input
-              type="text"
-              className={styles["username"]}
-              value={username}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setUsername(e.target.value);
-              }}
-            />
+            <span className={styles["input-container"]}>
+              <input
+                type="text"
+                className={styles["username"]}
+                value={username}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUsername(e.target.value);
+                }}
+              />
+            </span>
             <span className={styles["error"]}>
               {hideErrors || checkUsername(username) === "valid"
                 ? null
                 : checkUsername(username)}
             </span>
             <span className={styles["input-title"]}>Password</span>
-            <input
-              type="password"
-              className={styles["password"]}
-              value={password}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setPassword(e.target.value);
-              }}
-            />
+            <span className={styles["input-container"]}>
+              <input
+                type="password"
+                className={styles["password"]}
+                value={password}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </span>
             <span className={styles["error"]}>
               {hideErrors || checkPassword(password) === "valid"
                 ? null

@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
@@ -15,7 +15,8 @@ const Login = () => {
     console.log("forgot password");
   };
 
-  const login = () => {
+  const login = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log("login");
   };
 
@@ -36,25 +37,29 @@ const Login = () => {
               Welcome back! Enter your account details to sign in.
             </span>
           </div>
-          <div className={styles["input-container"]}>
+          <form className={styles["form"]} onSubmit={login}>
             <span>Username</span>
-            <input
-              type="text"
-              className={styles["username"]}
-              value={username}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setUsername(e.target.value);
-              }}
-            />
+            <span className={styles["input-container"]}>
+              <input
+                type="text"
+                className={styles["username"]}
+                value={username}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUsername(e.target.value);
+                }}
+              />
+            </span>
             <span className={styles["input-title"]}>Password</span>
-            <input
-              type="password"
-              className={styles["password"]}
-              value={password}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setPassword(e.target.value);
-              }}
-            />
+            <span className={styles["input-container"]}>
+              <input
+                type="password"
+                className={styles["password"]}
+                value={password}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </span>
             <div className={styles["remember-forgot-container"]}>
               <div className={styles["remember-me"]}>
                 <input
@@ -72,11 +77,9 @@ const Login = () => {
               </div>
             </div>
             <div className={styles["login-container"]}>
-              <button className={styles["login"]} onClick={login}>
-                Login
-              </button>
+              <input type="submit" value="Login" className={styles["login"]} />
             </div>
-          </div>
+          </form>
           <div className={styles["no-account"]} onClick={registerRedirect}>
             Don't have an account?{" "}
             <span className={styles["sign-up"]}>Sign up!</span>
