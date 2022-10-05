@@ -26,8 +26,8 @@ database.connect((err) => {
 });
 
 // HTTP Requests
-app.get("/getEmails/:email", (req: Request, res: Response) => {
-  const GET_COUNT_QUERY = "SELECT email FROM users WHERE email = ?";
+app.get("/getEmailCount/:email", (req: Request, res: Response) => {
+  const GET_COUNT_QUERY = "SELECT COUNT(email) FROM users WHERE email = ?";
   database.query(GET_COUNT_QUERY, [req.params.email], (err, result) => {
     if (err) {
       return res.send(err);
@@ -37,8 +37,9 @@ app.get("/getEmails/:email", (req: Request, res: Response) => {
   });
 });
 
-app.get("/getUsernames/:username", (req: Request, res: Response) => {
-  const GET_COUNT_QUERY = "SELECT username FROM users WHERE username = ?";
+app.get("/getUsernameCount/:username", (req: Request, res: Response) => {
+  const GET_COUNT_QUERY =
+    "SELECT COUNT(username) FROM users WHERE username = ?";
   database.query(GET_COUNT_QUERY, [req.params.username], (err, result) => {
     if (err) {
       return res.send(err);
