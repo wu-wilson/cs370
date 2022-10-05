@@ -7,6 +7,7 @@ import {
   HiOutlineLockOpen,
 } from "react-icons/hi";
 import { checkEmail, checkUsername, checkPassword } from "./HelperFunctions";
+import axios from "axios";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
 import styles from "./Register.module.scss";
@@ -21,6 +22,24 @@ const Register = () => {
   const [hideErrors, setHideErrors] = useState<boolean>(true);
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const checkEmailUnique = async (e: string) => {
+    await axios
+      .get(`http://localhost:4000/getEmailCount/${e}`)
+      .then((res) => {
+        return res.data[0]["num"] === 0;
+      })
+      .catch(console.error);
+  };
+
+  const checkUsernameUnique = async (u: string) => {
+    await axios
+      .get(`http://localhost:4000/getUsernameCount/${u}`)
+      .then((res) => {
+        return res.data[0]["num"] === 0;
+      })
+      .catch(console.error);
+  };
 
   const createAccount = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

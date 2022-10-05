@@ -4,6 +4,8 @@ import cors from "cors";
 import mysql2 from "mysql2";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 // Setting up server
 const app = express();
 app.use(cors());
@@ -27,7 +29,8 @@ database.connect((err) => {
 
 // HTTP Requests
 app.get("/getEmailCount/:email", (req: Request, res: Response) => {
-  const GET_COUNT_QUERY = "SELECT COUNT(email) FROM users WHERE email = ?";
+  const GET_COUNT_QUERY =
+    "SELECT COUNT(email) AS num FROM users WHERE email = ?";
   database.query(GET_COUNT_QUERY, [req.params.email], (err, result) => {
     if (err) {
       return res.send(err);
@@ -39,7 +42,7 @@ app.get("/getEmailCount/:email", (req: Request, res: Response) => {
 
 app.get("/getUsernameCount/:username", (req: Request, res: Response) => {
   const GET_COUNT_QUERY =
-    "SELECT COUNT(username) FROM users WHERE username = ?";
+    "SELECT COUNT(username) AS num FROM users WHERE username = ?";
   database.query(GET_COUNT_QUERY, [req.params.username], (err, result) => {
     if (err) {
       return res.send(err);
