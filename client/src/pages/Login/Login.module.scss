@@ -51,10 +51,24 @@
     margin-top: 1rem;
   }
   .input-container {
+    position: relative;
+    .icon {
+      position: absolute;
+      height: 100%;
+      width: 20px;
+      padding: 0px 5px 0px 5px;
+      transition: ease color 200ms;
+    }
+    .lock {
+      &:hover {
+        cursor: pointer;
+      }
+    }
     .username,
     .password {
       height: 34px;
       width: 100%;
+      padding-left: 30px;
       box-sizing: border-box;
       border: 1.5px solid black;
       border-radius: 5px;

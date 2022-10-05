@@ -1,5 +1,11 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  HiOutlineMail,
+  HiOutlineUser,
+  HiOutlineLockClosed,
+  HiOutlineLockOpen,
+} from "react-icons/hi";
 import { checkEmail, checkUsername, checkPassword } from "./HelperFunctions";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
@@ -13,6 +19,8 @@ const Register = () => {
   const [password, setPassword] = useState<string>("");
 
   const [hideErrors, setHideErrors] = useState<boolean>(true);
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const createAccount = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +55,7 @@ const Register = () => {
           <form className={styles["form"]} onSubmit={createAccount}>
             <span>Email</span>
             <span className={styles["input-container"]}>
+              <HiOutlineMail className={styles["icon"]} />
               <input
                 type="text"
                 className={styles["email"]}
@@ -63,6 +72,7 @@ const Register = () => {
             </span>
             <span className={styles["input-title"]}>Username</span>
             <span className={styles["input-container"]}>
+              <HiOutlineUser className={styles["icon"]} />
               <input
                 type="text"
                 className={styles["username"]}
@@ -79,8 +89,19 @@ const Register = () => {
             </span>
             <span className={styles["input-title"]}>Password</span>
             <span className={styles["input-container"]}>
+              {showPassword ? (
+                <HiOutlineLockOpen
+                  className={styles["icon"] + " " + styles["lock"]}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              ) : (
+                <HiOutlineLockClosed
+                  className={styles["icon"] + " " + styles["lock"]}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              )}
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className={styles["password"]}
                 value={password}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {

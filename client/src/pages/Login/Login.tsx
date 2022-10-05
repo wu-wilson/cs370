@@ -1,5 +1,10 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  HiOutlineUser,
+  HiOutlineLockClosed,
+  HiOutlineLockOpen,
+} from "react-icons/hi";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
 import styles from "./Login.module.scss";
@@ -10,6 +15,8 @@ const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const forgotPassword = () => {
     console.log("forgot password");
@@ -40,6 +47,7 @@ const Login = () => {
           <form className={styles["form"]} onSubmit={login}>
             <span>Username</span>
             <span className={styles["input-container"]}>
+              <HiOutlineUser className={styles["icon"]} />
               <input
                 type="text"
                 className={styles["username"]}
@@ -51,8 +59,19 @@ const Login = () => {
             </span>
             <span className={styles["input-title"]}>Password</span>
             <span className={styles["input-container"]}>
+              {showPassword ? (
+                <HiOutlineLockOpen
+                  className={styles["icon"] + " " + styles["lock"]}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              ) : (
+                <HiOutlineLockClosed
+                  className={styles["icon"] + " " + styles["lock"]}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              )}
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className={styles["password"]}
                 value={password}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
