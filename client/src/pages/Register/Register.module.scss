@@ -50,6 +50,7 @@
   .input-title {
     margin-top: 1rem;
   }
+  .email,
   .username,
   .password {
     height: 30px;
@@ -60,31 +61,11 @@
       border: 2px solid vars.$secondary-color;
     }
   }
-  .remember-forgot-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    .remember-me {
-      input[type="checkbox"] {
-        vertical-align: middle;
-        margin-left: 0;
-      }
-    }
-    .forgot {
-      font-style: italic;
-      text-decoration: underline;
-      &:hover {
-        cursor: pointer;
-        font-weight: bold;
-        color: vars.$secondary-color;
-      }
-    }
-  }
-  .login-container {
+  .button-container {
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
-    .login {
+    .create-account {
       width: 120px;
       height: 45px;
       border: none;
@@ -101,10 +82,10 @@
   }
 }
 
-.no-account {
+.has-account {
   font-style: italic;
   margin-top: 2rem;
-  .sign-up {
+  .sign-in {
     text-decoration: underline;
     transition: ease color 200ms;
     &:hover {
@@ -124,10 +105,6 @@
   .titles {
     width: 60%;
   }
-  .remember-me,
-  .forgot {
-    font-size: 0.9rem;
-  }
 }
 
 /* Smartphones */
@@ -138,9 +115,5 @@
   }
   .titles {
     width: 90%;
-  }
-  .remember-me,
-  .forgot {
-    font-size: 0.7rem;
   }
 }

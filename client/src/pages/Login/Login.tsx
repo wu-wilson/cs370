@@ -19,7 +19,7 @@ const Login = () => {
     console.log("login");
   };
 
-  const createAccount = () => {
+  const registerRedirect = () => {
     navigate("/register");
   };
 
@@ -30,7 +30,7 @@ const Login = () => {
         <div className={styles["card"]}>
           <div className={styles["titles"]}>
             <span className={styles["title"]}>
-              Login<span className={styles["period"]}>.</span>
+              Login<span className={styles["period"]}>!</span>
             </span>
             <span className={styles["subtitle"]}>
               Welcome back! Enter your account details to sign in.
@@ -77,7 +77,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-          <div className={styles["no-account"]} onClick={createAccount}>
+          <div className={styles["no-account"]} onClick={registerRedirect}>
             Don't have an account?{" "}
             <span className={styles["sign-up"]}>Sign up!</span>
           </div>
