@@ -26,9 +26,20 @@ database.connect((err) => {
 });
 
 // HTTP Requests
-app.get("/getUsers", (req: Request, res: Response) => {
-  const SAMPLE_GET_QUERY = `SELECT * FROM users`;
-  database.query(SAMPLE_GET_QUERY, (err, result) => {
+app.get("/getEmails/:email", (req: Request, res: Response) => {
+  const GET_COUNT_QUERY = "SELECT email FROM users WHERE email = ?";
+  database.query(GET_COUNT_QUERY, [req.params.email], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send(result);
+    }
+  });
+});
+
+app.get("/getUsernames/:username", (req: Request, res: Response) => {
+  const GET_COUNT_QUERY = "SELECT username FROM users WHERE username = ?";
+  database.query(GET_COUNT_QUERY, [req.params.username], (err, result) => {
     if (err) {
       return res.send(err);
     } else {
