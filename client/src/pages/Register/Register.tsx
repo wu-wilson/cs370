@@ -25,7 +25,7 @@ const Register = () => {
 
   const checkEmailUnique = async (e: string) => {
     await axios
-      .get(`http://localhost:4000/getEmailCount/${e}`)
+      .get(`${process.env.REACT_APP_API_URL}/getEmailCount/${e}`)
       .then((res) => {
         return res.data[0]["num"] === 0;
       })
@@ -34,7 +34,7 @@ const Register = () => {
 
   const checkUsernameUnique = async (u: string) => {
     await axios
-      .get(`http://localhost:4000/getUsernameCount/${u}`)
+      .get(`${process.env.REACT_APP_API_URL}/getUsernameCount/${u}`)
       .then((res) => {
         return res.data[0]["num"] === 0;
       })
