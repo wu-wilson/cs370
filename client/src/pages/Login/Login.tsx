@@ -6,13 +6,25 @@ import {
   HiOutlineLockOpen,
 } from "react-icons/hi";
 import Particles from "../../components/Particles/Particles";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  inMemoryPersistence,
+} from "firebase/auth";
 import vars from "../../App.module.scss";
 import styles from "./Login.module.scss";
+import { UserAuth } from "../../context/AuthContext";
+import firebase, { auth } from "../../firebase";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState<string>("");
+  const { login } = UserAuth();
+
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
@@ -22,14 +34,28 @@ const Login = () => {
     console.log("forgot password");
   };
 
-  const login = (e: FormEvent<HTMLFormElement>) => {
+  const signIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("login");
+    try {
+      if (login) {
+        await login(email, password);
+        navigate("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const registerRedirect = () => {
     navigate("/register");
   };
+
+  useEffect(() => {
+    setPersistence(
+      auth,
+      rememberMe ? browserLocalPersistence : browserSessionPersistence
+    );
+  }, [rememberMe]);
 
   return (
     <>
@@ -44,16 +70,16 @@ const Login = () => {
               Welcome back! Enter your account details to sign in.
             </span>
           </div>
-          <form className={styles["form"]} onSubmit={login}>
-            <span>Username</span>
+          <form className={styles["form"]} onSubmit={signIn}>
+            <span>Email</span>
             <span className={styles["input-container"]}>
               <HiOutlineUser className={styles["icon"]} />
               <input
                 type="text"
-                className={styles["username"]}
-                value={username}
+                className={styles["email"]}
+                value={email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  setUsername(e.target.value);
+                  setEmail(e.target.value);
                 }}
               />
             </span>

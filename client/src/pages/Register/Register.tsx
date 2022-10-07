@@ -6,49 +6,38 @@ import {
   HiOutlineLockClosed,
   HiOutlineLockOpen,
 } from "react-icons/hi";
-import { checkEmail, checkUsername, checkPassword } from "./HelperFunctions";
+import { checkEmail, checkPassword } from "./HelperFunctions";
 import axios from "axios";
 import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
 import styles from "./Register.module.scss";
+import { UserAuth } from "../../context/AuthContext";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const [hideErrors, setHideErrors] = useState<boolean>(true);
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const checkEmailUnique = async (e: string) => {
-    await axios
-      .get(`${process.env.REACT_APP_API_URL}/getEmailCount/${e}`)
-      .then((res) => {
-        return res.data[0]["num"] === 0;
-      })
-      .catch(console.error);
-  };
+  const { createUser } = UserAuth();
 
-  const checkUsernameUnique = async (u: string) => {
-    await axios
-      .get(`${process.env.REACT_APP_API_URL}/getUsernameCount/${u}`)
-      .then((res) => {
-        return res.data[0]["num"] === 0;
-      })
-      .catch(console.error);
-  };
-
-  const createAccount = (e: FormEvent<HTMLFormElement>) => {
+  const createAccount = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       checkEmail(email) === "valid" &&
-      checkUsername(username) === "valid" &&
-      checkPassword(password) === "valid"
+      checkPassword(password) === "valid" &&
+      createUser
     ) {
-      console.log("createAccount");
+      try {
+        await createUser(email, password);
+        navigate("/");
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       setHideErrors(false);
     }
@@ -88,23 +77,6 @@ const Register = () => {
               {hideErrors || checkEmail(email) === "valid"
                 ? null
                 : checkEmail(email)}
-            </span>
-            <span className={styles["input-title"]}>Username</span>
-            <span className={styles["input-container"]}>
-              <HiOutlineUser className={styles["icon"]} />
-              <input
-                type="text"
-                className={styles["username"]}
-                value={username}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  setUsername(e.target.value);
-                }}
-              />
-            </span>
-            <span className={styles["error"]}>
-              {hideErrors || checkUsername(username) === "valid"
-                ? null
-                : checkUsername(username)}
             </span>
             <span className={styles["input-title"]}>Password</span>
             <span className={styles["input-container"]}>

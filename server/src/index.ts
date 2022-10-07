@@ -28,29 +28,6 @@ database.connect((err) => {
 });
 
 // HTTP Requests
-app.get("/getEmailCount/:email", (req: Request, res: Response) => {
-  const GET_COUNT_QUERY =
-    "SELECT COUNT(email) AS num FROM users WHERE email = ?";
-  database.query(GET_COUNT_QUERY, [req.params.email], (err, result) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.send(result);
-    }
-  });
-});
-
-app.get("/getUsernameCount/:username", (req: Request, res: Response) => {
-  const GET_COUNT_QUERY =
-    "SELECT COUNT(username) AS num FROM users WHERE username = ?";
-  database.query(GET_COUNT_QUERY, [req.params.username], (err, result) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.send(result);
-    }
-  });
-});
 
 // Listen on port 4000
 app.listen(4000, () => {

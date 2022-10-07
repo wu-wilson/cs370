@@ -8,19 +8,6 @@ export const checkEmail = (email: string) => {
   }
 };
 
-export const checkUsername = (username: string) => {
-  // Check length
-  if (username.length < 6 || username.length > 16) {
-    return "*Username must be betweeen 6 and 30 characters";
-  }
-  // Check valid characters
-  else if (username.match(/[^0-9a-z]/i)) {
-    return "*Username can only consist of numbers and digits";
-  } else {
-    return "valid";
-  }
-};
-
 export const checkPassword = (password: string) => {
   // Check length
   if (password.length < 8 || password.length > 16) {
