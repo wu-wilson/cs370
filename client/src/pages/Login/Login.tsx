@@ -28,7 +28,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const forgotPassword = () => {
-    console.log("forgot password");
+    navigate("/resetpassword");
   };
 
   const signIn = async (e: FormEvent<HTMLFormElement>) => {
@@ -60,9 +60,7 @@ const Login = () => {
       <div className={styles["container"]}>
         <div className={styles["card"]}>
           <div className={styles["titles"]}>
-            <span className={styles["title"]}>
-              Login<span className={styles["period"]}>!</span>
-            </span>
+            <span className={styles["title"]}>Login</span>
             <span className={styles["subtitle"]}>
               Welcome back! Enter your account details to sign in.
             </span>

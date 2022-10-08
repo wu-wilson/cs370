@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   UserCredential,
   User,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -14,6 +15,7 @@ type AuthContext = {
   logout?: () => Promise<void>;
   createUser?: (email: string, password: string) => Promise<UserCredential>;
   login?: (email: string, password: string) => Promise<UserCredential>;
+  resetPassword?: (email: string) => Promise<void>;
 };
 
 const UserContext = createContext<AuthContext>({});
@@ -41,8 +43,14 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
     return () => unsubscribe();
   }, []);
 
+  const resetPassword = (email: string) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   return (
-    <UserContext.Provider value={{ user, logout, createUser, login }}>
+    <UserContext.Provider
+      value={{ user, logout, createUser, login, resetPassword }}
+    >
       {children}
     </UserContext.Provider>
   );

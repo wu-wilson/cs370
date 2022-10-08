@@ -53,9 +53,7 @@ const Register = () => {
       <div className={styles["container"]}>
         <div className={styles["card"]}>
           <div className={styles["titles"]}>
-            <span className={styles["title"]}>
-              Join RACE<span className={styles["period"]}>!</span>
-            </span>
+            <span className={styles["title"]}>Join RACE</span>
             <span className={styles["subtitle"]}>
               Create an account and race to the courts!
             </span>

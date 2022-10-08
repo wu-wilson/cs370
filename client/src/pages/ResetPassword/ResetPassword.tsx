@@ -1,12 +1,28 @@
 import Particles from "../../components/Particles/Particles";
 import { HiOutlineUser } from "react-icons/hi";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import vars from "../../App.module.scss";
 import styles from "./ResetPassword.module.scss";
+import { UserAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
-  const reset = () => {};
+
+  const { resetPassword } = UserAuth();
+
+  const reset = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      if (resetPassword) {
+        await resetPassword(email);
+        navigate("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -14,9 +30,7 @@ const ResetPassword = () => {
       <div className={styles["container"]}>
         <div className={styles["card"]}>
           <div className={styles["titles"]}>
-            <span className={styles["title"]}>
-              Reset Password<span className={styles["period"]}>.</span>
-            </span>
+            <span className={styles["title"]}>Reset Password</span>
             <span className={styles["subtitle"]}>
               Enter the email associated with your account to receive a link to
               reset your password.
@@ -38,7 +52,7 @@ const ResetPassword = () => {
             <div className={styles["reset-container"]}>
               <input
                 type="submit"
-                value="Reset Password"
+                value="Send Reset Password Email"
                 className={styles["reset"]}
               />
             </div>
