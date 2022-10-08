@@ -130,6 +130,15 @@
   }
 }
 
+.error {
+  color: red;
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
 /* Tablets */
 @media only screen and (max-width: vars.$tablet_bp) {
   .card {
@@ -157,5 +166,8 @@
   .remember-me,
   .forgot {
     font-size: 0.7rem;
+  }
+  .error {
+    font-size: 0.6rem;
   }
 }

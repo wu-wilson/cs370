@@ -15,6 +15,7 @@ import vars from "../../App.module.scss";
 import styles from "./Login.module.scss";
 import { UserAuth } from "../../context/AuthContext";
 import { auth } from "../../firebase";
+import { FirebaseError } from "firebase/app";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,21 +28,45 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
+  const [error, setError] = useState<string | null>(null);
+  const [showError, setShowError] = useState<boolean>(false);
+
   const forgotPassword = () => {
     navigate("/resetpassword");
   };
 
   const signIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      if (login) {
-        await login(email, password);
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
+    if (login) {
+      await login(email, password)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((e: FirebaseError) => {
+          switch (e.code) {
+            case "auth/invalid-email":
+            case "auth/wrong-password":
+              setError("*Email or password is incorrect.");
+              break;
+            default:
+              setError("*An error occurred. Please try again later.");
+              break;
+          }
+          if (email === "" || password === "") {
+            setError("*Enter your email and password.");
+          }
+          console.log(e.code);
+        });
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [error]);
 
   const registerRedirect = () => {
     navigate("/register");
@@ -66,6 +91,7 @@ const Login = () => {
             </span>
           </div>
           <form className={styles["form"]} onSubmit={signIn}>
+            <div className={styles["error"]}>{showError ? error : null}</div>
             <span>Email</span>
             <span className={styles["input-container"]}>
               <HiOutlineUser className={styles["icon"]} />
