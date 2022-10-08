@@ -7,17 +7,14 @@ import {
 } from "react-icons/hi";
 import Particles from "../../components/Particles/Particles";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
   setPersistence,
   browserLocalPersistence,
   browserSessionPersistence,
-  inMemoryPersistence,
 } from "firebase/auth";
 import vars from "../../App.module.scss";
 import styles from "./Login.module.scss";
 import { UserAuth } from "../../context/AuthContext";
-import firebase, { auth } from "../../firebase";
+import { auth } from "../../firebase";
 
 const Login = () => {
   const navigate = useNavigate();
