@@ -1,8 +1,8 @@
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import Home from "./pages/Home/Home";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -15,7 +15,7 @@ const App = () => {
             path="/"
             element={
               <ProtectedRoute>
-                <Home />
+                <Dashboard />
               </ProtectedRoute>
             }
           />

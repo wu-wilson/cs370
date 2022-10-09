@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 
-const Home = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
   const { user, logout } = UserAuth();
 
@@ -20,4 +20,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

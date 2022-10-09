@@ -22,6 +22,7 @@ const UserContext = createContext<AuthContext>({});
 
 export const AuthContextProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<User | null>();
+  const [authing, setAuthing] = useState<boolean>(true);
 
   const createUser = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -39,6 +40,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+      setAuthing(false);
     });
     return () => unsubscribe();
   }, []);
@@ -46,6 +48,10 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
   const resetPassword = (email: string) => {
     return sendPasswordResetEmail(auth, email);
   };
+
+  if (authing) {
+    return <div>loading</div>;
+  }
 
   return (
     <UserContext.Provider
