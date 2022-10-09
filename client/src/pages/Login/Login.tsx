@@ -29,7 +29,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const [error, setError] = useState<string | null>(null);
-  const [showError, setShowError] = useState<boolean>(false);
 
   const forgotPassword = () => {
     navigate("/resetpassword");
@@ -60,14 +59,6 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (error) {
-      setShowError(true);
-    } else {
-      setShowError(false);
-    }
-  }, [error]);
-
   const registerRedirect = () => {
     navigate("/register");
   };
@@ -91,7 +82,7 @@ const Login = () => {
             </span>
           </div>
           <form className={styles["form"]} onSubmit={signIn}>
-            <div className={styles["error"]}>{showError ? error : null}</div>
+            <div className={styles["error"]}>{error ? error : null}</div>
             <span>Email</span>
             <span className={styles["input-container"]}>
               <HiOutlineUser className={styles["icon"]} />

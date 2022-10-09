@@ -12,12 +12,16 @@ import Particles from "../../components/Particles/Particles";
 import vars from "../../App.module.scss";
 import styles from "./Register.module.scss";
 import { UserAuth } from "../../context/AuthContext";
+import { FirebaseError } from "firebase/app";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const [error, setError] = useState<string | null>(null);
+  const [showError, setShowError] = useState<boolean>(false);
 
   const [hideErrors, setHideErrors] = useState<boolean>(true);
 
@@ -32,12 +36,22 @@ const Register = () => {
       checkPassword(password) === "valid" &&
       createUser
     ) {
-      try {
-        await createUser(email, password);
-        navigate("/");
-      } catch (e) {
-        console.log(e);
-      }
+      await createUser(email, password)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((e: FirebaseError) => {
+          console.log(e.code);
+          switch (e.code) {
+            case "auth/email-already-in-use":
+              setError(`${email} is already in use.`);
+              break;
+            default:
+              setError("An error occurred. Please try again later.");
+              break;
+          }
+          setShowError(true);
+        });
     } else {
       setHideErrors(false);
     }
@@ -59,6 +73,7 @@ const Register = () => {
             </span>
           </div>
           <form className={styles["form"]} onSubmit={createAccount}>
+            <div className={styles["error-fb"]}>{showError ? error : null}</div>
             <span>Email</span>
             <span className={styles["input-container"]}>
               <HiOutlineMail className={styles["icon"]} />
