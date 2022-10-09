@@ -39,7 +39,7 @@ const Login = () => {
     if (login) {
       await login(email, password)
         .then(() => {
-          navigate("/");
+          navigate(`/dashboard`);
         })
         .catch((e: FirebaseError) => {
           switch (e.code) {
@@ -54,7 +54,7 @@ const Login = () => {
           if (email === "" || password === "") {
             setError("*Enter your email and password.");
           }
-          console.log(e.code);
+          console.log(e);
         });
     }
   };

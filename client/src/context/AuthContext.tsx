@@ -38,7 +38,6 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
       setAuthing(false);
     });
@@ -49,11 +48,9 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  if (authing) {
-    return <div>loading</div>;
-  }
-
-  return (
+  return authing ? (
+    <div>Loading</div>
+  ) : (
     <UserContext.Provider
       value={{ user, logout, createUser, login, resetPassword }}
     >

@@ -38,7 +38,7 @@ const Register = () => {
     ) {
       await createUser(email, password)
         .then(() => {
-          navigate("/");
+          navigate("/dashboard");
         })
         .catch((e: FirebaseError) => {
           console.log(e.code);

@@ -11,8 +11,9 @@ const App = () => {
     <AuthContextProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
