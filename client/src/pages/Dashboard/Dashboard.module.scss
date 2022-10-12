@@ -1,0 +1,182 @@
+@use "../../App.module.scss" as vars;
+
+.container_col {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+  justify-content: padding-left;
+  font-family: vars.$font_family;
+  color: white;
+  flex: 2;
+  flex-wrap: wrap;
+}
+
+.header_card {
+  height: auto;
+  width: 200%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 40px;
+  justify-content: space-between;
+  background-color: vars.$primary_color;
+  flex: 1;
+  flex-wrap: wrap;
+
+}
+
+.side_panel{
+  height: 500px;
+  width: 25%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: padding-left;
+  box-sizing: border-box;
+  padding: 40px;
+  justify-content: space-between;
+  background-color: vars.$secondary-color;
+  position: relative;
+  flex-wrap: wrap;
+  flex: 2
+}
+
+.court_card{
+  height: 75px;
+  width: 125px;
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+
+  .court_name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: vars.$primary_color;
+    position: relative;
+    justify-content: center;
+    align-items: middle;
+    text-align: center;
+    margin: auto;
+  }
+
+  .info{
+    font-size: .7rem;
+    color: vars.$primary_color;
+  }
+}
+
+.center_panel{
+  height: 500px;
+  width: 50%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 40px;
+  justify-content: space-between;
+  background-color: grey;
+  flex: 2;
+  flex-wrap: wrap;
+}
+
+.center_card{
+  position: relative;
+  margin-top: 5px;
+  height: 30px;
+  width: 90%;
+  max-width: 350px;
+  background-color: white;
+  align-items: baseline;
+  margin: auto;
+  justify-content: flex-start;
+  flex-direction: column;
+
+
+  .court_name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: vars.$primary_color;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.headers {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  text-align: center;
+  width: 93%;
+
+  .header {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+
+/* The container <div> - needed to position the dropdown content
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+ Dropdown Button
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+*/
+
+
+
+/* Tablets */
+@media only screen and (max-width: vars.$tablet_bp) {
+  .card {
+    width: 60%;
+    font-size: 0.9rem;
+  }
+  .titles {
+    width: 60%;
+  }
+  .remember-me,
+  .forgot {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+/* Smartphones */
+@media only screen and (max-width: vars.$smartphone_bp) {
+  .card {
+    width: 85%;
+    font-size: 0.8rem;
+  }
+  .titles {
+    width: 90%;
+  }
+  .remember-me,
+  .forgot {
+    font-size: 0.7rem;
+  }
+  .error {
+    font-size: 0.6rem;
+  }
+}
