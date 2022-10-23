@@ -1,23 +1,36 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import React from 'react'
 import { UserAuth } from "../../context/AuthContext";
 import styles from "./Dashboard.module.scss";
+
+import basketball  from './basketball.webp';
+import volleyball  from './volleyball.jpeg';
+import tennis  from './tennis.jpeg';
+import soccer  from './soccer.jpeg';
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user, logout } = UserAuth();
-
   const signOut = async () => {
     if (logout) {
       await logout();
       navigate("/login");
     }
+  };
+  const[open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   /*
   const myFunction = async () => {
       document.getElementById("myDropdown").classList.toggle("show");
   }
   */
 
-  };
+
+
 
 
 
@@ -39,7 +52,7 @@ const Dashboard = () => {
     <br/>
     <div className={styles["container_col"]}>
       <div className={styles["side_panel"]}>
-        <div className={styles["headers"]}>
+        <div className={styles["side_panel_headers"]}>
           <button> Upcoming</button>
           <button> Passed</button>
         </div>
@@ -74,24 +87,51 @@ const Dashboard = () => {
           <span className={styles["header"]}>Create a Reservation</span>
         </div>
         <div className={styles["center_card"]}>
-          <button> + </button>
-          <span className={styles["court_name"]}> Court Type 1 </span>
+          <img style={{ width: 250, height: 100 }} src={basketball} alt="basketball"/>
+          <br/>
+          <span className={styles["court_name"]}> Basketball Courts </span>
+          <button onClick={handleOpen}> + </button>
+          {open ? (
+            <div className={styles["court_name"]}>
+                <button> Court 1 </button> <br/>
+                <button> Court 2 </button>
+            </div>
+          ) : null}
         </div>
         <div className={styles["center_card"]}>
-          <button> + </button>
-          <span className={styles["court_name"]}> Court Type 2 </span>
+        <img style={{ width: 250, height: 150 }} src={soccer} alt="soccer"/>
+        <span className={styles["court_name"]}> Soccer Fields </span>
+          <button onClick={handleOpen}> + </button>
+          {open ? (
+            <div className={styles["court_name"]}>
+                <button> Court 1 </button> <br/>
+                <button> Court 2 </button>
+            </div>
+          ) : null}
         </div>
         <div className={styles["center_card"]}>
-          <button> + </button>
-          <span className={styles["court_name"]}> Court Type 3 </span>
+          <img style={{ width: 250, height: 150 }} src={volleyball} alt="volleyball"/>
+          <br/>
+          <span className={styles["court_name"]}> Volleyball Courts </span>
+          <button onClick={handleOpen}> + </button>
+          {open ? (
+            <div className={styles["court_name"]}>
+                <button> Court 1 </button> <br/>
+                <button> Court 2 </button>
+            </div>
+          ) : null}
         </div>
         <div className={styles["center_card"]}>
-          <button> + </button>
-          <span className={styles["court_name"]}> Court Type 4 </span>
-        </div>
-        <div className={styles["center_card"]}>
-          <button> + </button>
-          <span className={styles["court_name"]}> Court Type 5 </span>
+          <img style={{ width: 250, height: 150 }} src={tennis} alt="tennis"/>
+          <br/>
+          <span className={styles["court_name"]}> Tennis Courts </span>
+          <button onClick={handleOpen}> + </button>
+          {open ? (
+            <div className={styles["court_name"]}>
+                <button> Court 1 </button> <br/>
+                <button> Court 2 </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

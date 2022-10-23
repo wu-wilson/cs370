@@ -29,6 +29,7 @@
 }
 
 .side_panel{
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -67,14 +68,13 @@
 }
 
 .center_panel{
-  height: 500px;
+  height: 600px;
   width: 75%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   box-sizing: border-box;
   padding: 40px;
-  justify-content: space-between;
   background-color: vars.$quaternary-color;
   flex: 2;
   flex-wrap: wrap;
@@ -83,15 +83,14 @@
 .center_card{
   position: relative;
   margin-top: 5px;
-  height: 30px;
-  width: 90%;
-  max-width: 350px;
-  background-color: white;
-  align-items: baseline;
+  height: 175px;
+  width: 250px;
   margin: auto;
   justify-content: flex-start;
-  flex-direction: column;
-
+  flex-direction: row;
+  .center_card:hover {
+        background: url("./basketball.webp") no-repeat;
+  }
   .court_name {
     font-size: 1rem;
     font-weight: bold;
@@ -126,6 +125,20 @@
     font-weight: bold;
   }
 }
+
+.basketball {
+  background-image: url("./basketball.webp");
+}
+.volleyball {
+  background-image: url("./volleyball.jpeg");
+}
+.tennis {
+  background-image: url("./tennis.jpeg");
+}
+.basketball {
+  background-image: url("./soccer.jpeg");
+}
+
 
 
 /* The container <div> - needed to position the dropdown content
