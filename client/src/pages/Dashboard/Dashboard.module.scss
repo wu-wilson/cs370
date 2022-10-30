@@ -4,7 +4,7 @@
   height: 10vh;
   width: 100vw;
   display: flex;
-  align-items: left;
+  align-items: center;
   flex-direction: row;
   justify-content: padding-left;
   font-family: vars.$font_family;
@@ -12,35 +12,30 @@
   flex: 2;
   flex-wrap: wrap;
 }
-
+html {background-color: vars.$quaternary-color}
 .header_card {
   height: auto;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   box-sizing: border-box;
   padding: 40px;
+  margin-left: 150px;
   justify-content: space-between;
   background-color: vars.$primary_color;
-  flex: 1;
-  flex-wrap: wrap;
+
+  float: left;
+  display:block;
 
 }
-
 .side_panel{
+  height: auto;
   max-width: 200px;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
   padding: 10px;
   justify-content: center;
   background-color: vars.$secondary-color;
   position: relative;
-  flex-wrap: wrap;
-  flex: 2
+  clear: both;
 }
-
 .court_card{
   height: 75px;
   width: 125px;
@@ -49,6 +44,7 @@
   align-items: center;
   margin: auto;
   justify-content: center;
+  margin-bottom: 5px;
 
   .court_name {
     font-size: 1rem;
@@ -66,28 +62,29 @@
     color: vars.$primary_color;
   }
 }
-
 .center_panel{
-  height: 600px;
   width: 75%;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   box-sizing: border-box;
-  padding: 40px;
+  padding-left: 20px;
   background-color: vars.$quaternary-color;
-  flex: 2;
-  flex-wrap: wrap;
-}
+  margin-left: 150px;
 
+  flex-wrap: wrap;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-self: stretch;
+}
 .center_card{
-  position: relative;
-  margin-top: 5px;
+  margin-bottom: 20px;
   height: 175px;
   width: 250px;
-  margin: auto;
-  justify-content: flex-start;
-  flex-direction: row;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  align-self: stretch;
   .center_card:hover {
         background: url("./basketball.webp") no-repeat;
   }
@@ -102,15 +99,16 @@
     margin: auto;
   }
 }
-
 .side_panel_headers {
   display: flex;
   flex-direction: row;
+
   align-items: stretch;
   text-align: center;
   width: 93%;
   justify-content: center;
   margin-bottom: 10px;
+
   .header {
     font-size: 1rem;
     font-weight: bold;
@@ -121,11 +119,10 @@
   align-items: stretch;
   width: 93%;
   .header {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 }
-
 .basketball {
   background-image: url("./basketball.webp");
 }
@@ -138,8 +135,25 @@
 .basketball {
   background-image: url("./soccer.jpeg");
 }
-
-
+.dropdown_card {
+  height:auto;
+  width:auto;
+  background-color: white;
+  color: vars.$primary_color;
+}
+#floatLeft{
+  float:left;
+}
+#floatRight{
+  float:right;
+}
+#leftCol {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    clear: both;
+}
 
 /* The container <div> - needed to position the dropdown content
 .dropdown {
@@ -158,8 +172,6 @@
 }
 */
 
-
-
 /* Tablets */
 @media only screen and (max-width: vars.$tablet_bp) {
   .card {
@@ -174,10 +186,6 @@
     font-size: 0.9rem;
   }
 }
-
-
-
-
 
 /* Smartphones */
 @media only screen and (max-width: vars.$smartphone_bp) {
