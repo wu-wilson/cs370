@@ -17,7 +17,8 @@ html {background-color: vars.$quaternary-color}
   height: auto;
   width: 100%;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 10px;
+  padding-left: 20px;
   margin-left: 150px;
   justify-content: space-between;
   background-color: vars.$primary_color;
@@ -136,10 +137,11 @@ html {background-color: vars.$quaternary-color}
   background-image: url("./soccer.jpeg");
 }
 .dropdown_card {
-  height:auto;
+  height: 22px;
   width:auto;
   background-color: white;
   color: vars.$primary_color;
+  clear: both;
 }
 #floatLeft{
   float:left;

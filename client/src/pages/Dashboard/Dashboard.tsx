@@ -11,12 +11,13 @@ import soccer  from './soccer.jpeg';
 
 //SOURCES USED:
 /*
-// https://www.robinwieruch.de/react-dropdown/
-//    -> helped create the drop downs
-// https://stackoverflow.com/questions/62842192/getting-broken-image-icon-on-react-app-on-every-image
-//    -> helped allow me to use images
-// https://stackabuse.com/resizing-images-with-react/
-//    -> helped resize images
+https://www.robinwieruch.de/react-dropdown/
+   -> helped create the drop downs
+https://stackoverflow.com/questions/62842192/getting-broken-image-icon-on-react-app-on-every-image
+   -> helped allow me to use images
+https://stackabuse.com/resizing-images-with-react/
+   -> helped resize images
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
 */
 /*
 Helped with layout and alignment:
@@ -28,6 +29,9 @@ https://stackoverflow.com/questions/70503910/align-the-items-to-top-of-the-card
 https://webmasters.stackexchange.com/questions/44789/aligning-3-divs
 https://stackoverflow.com/questions/24094786/how-to-make-divs-float-on-both-ends-of-another-div
 https://smallbusiness.chron.com/navigation-bar-under-header-css-46501.html
+https://stackoverflow.com/questions/46417543/is-there-a-cross-axis-counterpart-to-the-flex-grow-property-or-flex-which
+https://stackoverflow.com/questions/9648910/how-to-set-the-background-color-of-the-whole-page-in-css
+
 */
 /*
 https://www.youtube.com/watch?v=t8JK5bVoVBw&ab_channel=LogRocket
@@ -58,9 +62,13 @@ const Dashboard = () => {
   }
   */
 
-// I'd like for the card to go all the way across the screen... not sure how to do this.
+
   return (
+    //Big container bcs react only returns one thing
     <>
+    {
+      //Container: contains header card
+    }
     <div className={styles["container_col"]}>
       <div className={styles["header_card"]}>
         <div className={styles["headers"]}>
@@ -74,12 +82,24 @@ const Dashboard = () => {
     </div>
     <br/>
     <br/>
+    {
+      // new container col: contains side panel and center panels
+    }
     <div className={styles["container_col"]}>
+    {
+      //side panel
+    }
       <div id = {styles['leftCol']} className={styles["side_panel"]}>
+      {
+        //side panel buttons (upcoming and passed)
+      }
         <div className={styles["side_panel_headers"]}>
           <button> Upcoming</button>
           <button> Passed</button>
         </div>
+        {
+          // list of courts underneath upcoming and passed; each gets it's own card.
+        }
         <div>
           <div className={styles["court_card"]}>
             <span className={styles["court_name"]}> Court 1 </span> <br/>
@@ -138,19 +158,32 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {
+        //^^ end of side panel ^^
+        // start of center panel
+      }
       <div className={styles["center_panel"]}>
+        {
+         // big text
+        }
           <div className={styles["headers"]}>
             <span className={styles["header"]}>Create a Reservation</span>
           </div>
+          {
+            // Sports types cards with dropdowns
+          }
           <div className={styles["center_card"]}>
             <img style={{ width: 250, height: 150 }} src={basketball} alt="basketball"/>
             <br/>
             <span className={styles["court_name"]}> Basketball Courts </span>
             <button id={styles["floatRight"]} onClick={handleOpen}> + </button>
+            {
+              //code for dropdown
+            }
             {open ? (
               <div className = {styles['dropdown_card']}>
                 <div id={styles["floatLeft"]}> Court 1 </div>
-                <button id={styles["floatRight"]}> reserve </button>
+                <button id={styles["floatRight"]}> Make a Reservation </button>
               </div>
             ) : null}
           </div>
@@ -161,7 +194,7 @@ const Dashboard = () => {
             {open ? (
               <div className = {styles['dropdown_card']}>
                 <div id={styles["floatLeft"]}> Court 1 </div>
-                <button id={styles["floatRight"]}> reserve </button>
+                <button id={styles["floatRight"]}> Make a Reservation </button>
               </div>
             ) : null}
           </div>
@@ -173,7 +206,7 @@ const Dashboard = () => {
             {open ? (
               <div className = {styles['dropdown_card']}>
                 <div id={styles["floatLeft"]}> Court 1 </div>
-                <button id={styles["floatRight"]}> reserve </button>
+                <button id={styles["floatRight"]}> Make a Reservation </button>
               </div>
             ) : null}
           </div>
@@ -185,7 +218,7 @@ const Dashboard = () => {
             {open ? (
               <div className = {styles['dropdown_card']}>
                 <div id={styles["floatLeft"]}> Court 1 </div>
-                <button id={styles["floatRight"]}> reserve </button>
+                <button id={styles["floatRight"]}> Make a Reservation </button>
               </div>
             ) : null}
           </div>
