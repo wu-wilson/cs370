@@ -3,11 +3,13 @@ import { useState } from "react";
 import React from 'react'
 import { UserAuth } from "../../context/AuthContext";
 import styles from "./Dashboard.module.scss";
+import { io } from 'socket.io-client';
+import SideNav from '../../components/Sidenav'
 
-import basketball  from './basketball.webp';
-import volleyball  from './volleyball.jpeg';
-import tennis  from './tennis.jpeg';
-import soccer  from './soccer.jpeg';
+import basketball  from './images/basketball.webp';
+import volleyball  from './images/volleyball.jpeg';
+import tennis  from './images/tennis.jpeg';
+import soccer  from './images/soccer.jpeg';
 
 //SOURCES USED:
 /*
@@ -62,6 +64,13 @@ const Dashboard = () => {
   }
   */
 
+  const socket = io('http://localhost:4000');
+  socket.emit('custom', user, user!.email);
+  socket.on('user', email => {
+    console.log('email: ', email);
+
+  });
+
 
   return (
     //Big container bcs react only returns one thing
@@ -77,6 +86,9 @@ const Dashboard = () => {
         <div className={styles["headers"]}>
           {user && user.email}
           <button id={styles["floatRight"]} onClick={signOut}>Sign Out</button>
+          <div className={styles["floatRight"]}>
+            <SideNav/>
+          </div>
         </div>
       </div>
     </div>
@@ -223,6 +235,7 @@ const Dashboard = () => {
             ) : null}
           </div>
       </div>
+      <SideNav/>
     </div>
   </>
 /*

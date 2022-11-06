@@ -5,6 +5,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Friends from "./pages/Friends"
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/friends" element={<Friends />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="*" element={<div>404 Page not found</div>} />
         </Routes>

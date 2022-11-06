@@ -87,7 +87,7 @@ html {background-color: vars.$quaternary-color}
   margin-bottom: auto;
   align-self: stretch;
   .center_card:hover {
-        background: url("./basketball.webp") no-repeat;
+        background: url("./images/basketball.webp") no-repeat;
   }
   .court_name {
     font-size: 1rem;
@@ -125,16 +125,16 @@ html {background-color: vars.$quaternary-color}
   }
 }
 .basketball {
-  background-image: url("./basketball.webp");
+  background-image: url("./images/basketball.webp");
 }
 .volleyball {
-  background-image: url("./volleyball.jpeg");
+  background-image: url("./images/volleyball.jpeg");
 }
 .tennis {
-  background-image: url("./tennis.jpeg");
+  background-image: url("./images/tennis.jpeg");
 }
 .basketball {
-  background-image: url("./soccer.jpeg");
+  background-image: url("./images/soccer.jpeg");
 }
 .dropdown_card {
   height: 22px;
